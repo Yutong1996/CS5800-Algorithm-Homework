@@ -16,17 +16,17 @@ def find_k_divisible_path(graph, s, t, k):
 
     visited.add(node)
     current_path.append(node)
-    
+
     if node == t and edge_count % k == 0:
       return current_path
   
     for neighbor in graph[node]:
       if neighbor not in visited or neighbor == t:
-        print(neighbor)
+        # print(neighbor)
         edge_count += 1
         # recursively call DFS with an updated edge count
         result_path = dfs(neighbor, edge_count)
-        print(result_path)
+        # print(result_path)
         if result_path:
           return result_path # return the path if found
         # if no k-divisible path is found, backtrack by removing the current node 

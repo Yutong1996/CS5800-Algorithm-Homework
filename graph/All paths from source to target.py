@@ -26,3 +26,16 @@ class Solution:
             self.path.append(node)
             self.dfs(graph, node)
             self.path.pop()
+            
+graph = {
+    0: [1, 2],
+    1: [3, 4],
+    2: [5],
+    3: [4],
+    4: [],
+    5: []
+}
+
+sol = Solution()
+result = sol.allPathsSourceTarget(graph)
+print(result)
