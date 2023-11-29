@@ -38,8 +38,13 @@ def has_cycle(graph):
 
         return False
 
-    path = dfs(list(graph.keys())[0], None, [])
-    return path if path else False
+    for start_node in graph:
+        if start_node not in visited:
+            cycle = dfs(start_node, None, [])
+            if cycle:
+                return cycle
+
+    return False
 
 
 graph1 = {
@@ -108,8 +113,13 @@ def find_minimal_cycle(graph):
 
         return minimal_cycle
 
-    path = dfs(list(graph.keys())[0], None, [])
-    return path if path else False
+    for start_node in graph:
+        if start_node not in visited:
+            cycle = dfs(start_node, None, [])
+            if cycle:
+                return cycle
+
+    return False
 
 graph01 = {
     1: [2, 3],
@@ -121,15 +131,33 @@ graph01 = {
 }
 
 minimal_cycle = find_minimal_cycle(graph01)
-print(minimal_cycle)
+print(minimal_cycle) #[2, 4, 6, 5]
 
 graph02 = {
+    4: [5, 2],
     1: [2, 3],
     2: [3, 4],
     3: [1, 2, 5],
-    4: [2, 5],
     5: [3, 4]
 }
 
 minimal_cycle = find_minimal_cycle(graph02)
-print(minimal_cycle)
+print(minimal_cycle) #[3, 1, 2]
+
+graph4 = {
+    6: [9], 
+    7: [9, 10], 
+    8: [10], 
+    10: [7, 8, 11], 
+    9: [6, 7, 11], 
+    11: [9, 10],
+    5: [2, 3], 
+    0: [1, 12, 2, 3], 
+    1: [0, 12, 4], 
+    2: [0, 4, 5], 
+    3: [0, 5], 
+    4: [1, 2], 
+    12: [0, 1]
+}
+minimal_cycle = find_minimal_cycle(graph4)
+print(minimal_cycle) #[2, 0, 1, 4]
