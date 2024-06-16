@@ -45,4 +45,13 @@ class ArrayStack:
     return self._size == 0
   def push(self, item: int):
     self._stack.append(item)
-  
+  def pop(self) -> int:
+    if self.is_empty():
+      raise IndexError("栈为空")
+    return self._stack.pop()
+  def peek(self) -> int:
+    if self.is_empty():
+      return IndexError("栈为空")
+    self._stack[-1]
+  def to_list(self) -> list[int]:
+    return self._stack
