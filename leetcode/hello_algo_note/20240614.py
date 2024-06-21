@@ -55,3 +55,7 @@ class ArrayStack:
     self._stack[-1]
   def to_list(self) -> list[int]:
     return self._stack
+  
+"""
+链表需要手动终止
+"""
